@@ -5,7 +5,7 @@ import TasksScreen from './src/screens/Tasks';
 export default function App() {
   
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{flex:1}}>
         <TasksScreen />
     </SafeAreaView>
   );
