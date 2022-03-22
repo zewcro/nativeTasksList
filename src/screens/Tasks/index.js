@@ -2,8 +2,8 @@ import React,  { useState } from 'react'
 import { render } from 'react-dom';
 import { Text, FlatList } from "react-native";
 import Header from "../../components/Header"
+import TaskForm from './TaskForm';
 import TaskTile from './TaskTile';
-
 
 export default function TasksScreen() {
     // Tasks List => Return FlatList => TaskTile
@@ -19,7 +19,12 @@ export default function TasksScreen() {
 
     return (
         <FlatList 
-            ListHeaderComponent={<Header />}
+            ListHeaderComponent={
+            <>
+            <Header />
+            <TaskForm />
+            </>
+        }
             contentContainerStyle={{ flexGrow:1}}
             data={tasks}
             keyExtractor={(item, index) => index.toString() }
@@ -27,3 +32,5 @@ export default function TasksScreen() {
         />
   )
 }
+
+
