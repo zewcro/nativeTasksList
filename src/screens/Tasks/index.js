@@ -1,11 +1,12 @@
 import { setStatusBarStyle } from 'expo-status-bar';
 import React,  { useState } from 'react'
 import { render } from 'react-dom';
-import { Text, FlatList } from "react-native";
+import {View, Text, FlatList, StyleSheet } from "react-native";
 import FloatingBtn from '../../components/FloatingBtn';
 import Header from "../../components/Header"
 import TaskForm from './TaskForm';
 import TaskTile from './TaskTile';
+import Counter from '../../components/Counter';
 
 export default function TasksScreen() {
     // Tasks List => Return FlatList => TaskTile
@@ -71,6 +72,12 @@ export default function TasksScreen() {
             <>
             <Header />
            {isFormVisible && <TaskForm onAddTask={onAddTask} />}
+            
+            <View style={styles.containerCounters}>
+                <Counter nb={tasks.length} title="Created Tasks :" />
+                <Counter nb={tasks.filter(t => t.isCompleted === true).length } title="Closed Tasks :" />
+            </View>
+
             </>}
             contentContainerStyle={{ flexGrow:1}}
             data={tasks}
@@ -82,3 +89,11 @@ export default function TasksScreen() {
   );
 }
 
+const styles = StyleSheet.create({
+    containerCounters: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        marginTop: 10,
+        paddingHorizontal: 20
+    }
+})
