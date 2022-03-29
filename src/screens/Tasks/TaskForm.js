@@ -1,18 +1,20 @@
 import React, {useState} from 'react';
 import { TextInput, StyleSheet, Button, View } from 'react-native'; 
 
-export default function TaskForm() {
+export default function TaskForm({ onAddTask }) {
 
-    const [newTitle, setNewTitle] = useState()
+    const [newTitle, setNewTitle] = useState("")
 
     const onChangeText = (val) => {
         setNewTitle(val)
     }
 
-    const onAddTask = () => {
-
+    const onAddNewTask = () => {
+        if (newTitle === "") return {
+        }
+        onAddTask(newTitle);
+        setNewTitle("");
     }
-
 
     return (
     <View style={styles.container} >
@@ -24,7 +26,7 @@ export default function TaskForm() {
         />
         <Button
             title="Ajouter"
-            onPress={onAddTask}
+            onPress={onAddNewTask}
         />
     </View>
   )
@@ -32,11 +34,17 @@ export default function TaskForm() {
 
 const styles = StyleSheet.create({
     container:{
-        flexDirection
+        flexDirection:"row",
+        justifyContent: "space-between",
+        alignItems:"center",
+        paddingHorizontal: 20,
+        marginTop: 10
     },
     input: {
         borderColor:"black",
-        borderWidth:1
+        borderWidth:1,
+        borderRadius:5,
+        width:"70%",
+        height: 40
     }
-
 })
