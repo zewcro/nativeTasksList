@@ -1,9 +1,9 @@
 import { setStatusBarStyle } from 'expo-status-bar';
-import React,  { useState } from 'react'
+import React,  { useState } from 'react';
 import { render } from 'react-dom';
 import {View, Text, FlatList, StyleSheet } from "react-native";
 import FloatingBtn from '../../components/FloatingBtn';
-import Header from "../../components/Header"
+import Header from "../../components/Header";
 import TaskForm from './TaskForm';
 import TaskTile from './TaskTile';
 import Counter from '../../components/Counter';
